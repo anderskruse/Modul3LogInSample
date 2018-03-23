@@ -18,4 +18,19 @@ public class LogicFacade {
         return user;
     }
 
+    
+
+
+    public static Order createOrder(int length, int width, int height) {
+        Order order = new Order(length, width, height);
+        
+        return order;
+        
+    }
+
+    public static Brick createBrickList(Order order) {
+        Brick brickList = new Brick(order);
+        
+        return brickList;
+    }
 }

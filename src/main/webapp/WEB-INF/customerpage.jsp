@@ -14,5 +14,10 @@
     <body>
         <h1>Hello <%=request.getParameter( "email" )%> </h1>
         You are now logged in as a customer of our wonderful site.
+        
+        What do you wanna do?
+        <!-- add href to order page
+             and previous orders -->
+        
     </body>
 </html>
