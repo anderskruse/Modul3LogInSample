@@ -1,8 +1,8 @@
 package FunctionLayer;
 
 /**
- * The purpose of LoginSampleException is to...
- * @author kasper
+ * 
+ * @author wtfakm
  */
 public class LoginSampleException extends Exception {
 

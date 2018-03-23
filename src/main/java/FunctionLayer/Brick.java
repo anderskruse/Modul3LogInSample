@@ -8,10 +8,15 @@ package FunctionLayer;
 
 public class Brick {
     //add the calculation for the bricks here
+    
+    private final int smallBrick = 2;
+    private final int mediumBrick = 4;
+    private final int largeBrick = 8;
 
     Brick(Order order) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
     
 
     
