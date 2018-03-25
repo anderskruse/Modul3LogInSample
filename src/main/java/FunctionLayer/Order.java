@@ -13,12 +13,17 @@ public class Order {
     private int length;
     private int height;
     private int width;
+    private int shipped;
 
-    public Order(int length, int width, int height) {
+    public Order(int length, int width, int height, int shipped) {
+        
         this.length = length;
         this.height = height;
         this.width = width;
+        this.shipped = shipped;
     }
+
+
 
     public int getOrderId() {
         return orderId;

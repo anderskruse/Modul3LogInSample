@@ -1,5 +1,6 @@
 package FunctionLayer;
 
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 
 /**
@@ -21,16 +22,15 @@ public class LogicFacade {
     
 
 
-    public static Order createOrder(int length, int width, int height) {
+    public static Order createOrder(int length, int width, int height, int id) {
         Order order = new Order(length, width, height);
-        
+        OrderMapper.createOrder(order, id);
         return order;
         
-    }
+    } 
 
-    public static Brick createBrickList(Order order) {
-        Brick brickList = new Brick(order);
-        
-        return brickList;
+    public static Order showOrder(int orderId){
+        Order showOrder = OrderMapper.getOrder(orderId);
+        return showOrder;
     }
 }
