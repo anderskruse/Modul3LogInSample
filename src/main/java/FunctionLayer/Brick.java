@@ -8,30 +8,40 @@ package FunctionLayer;
 
 public class Brick {
     
-    private int brickWidth;
-    private int brickLength;
+    private int width;
+    private int length;
+    private int height;
     private int qty;
 
-    public Brick(int brickWidth, int brickLength, int qty) {
-        this.brickWidth = brickWidth;
-        this.brickLength = brickLength;
+    public Brick(int width, int length, int height, int qty) {
+        this.width = width;
+        this.length = length;
+        this.height = height;
         this.qty = qty;
     }
 
-    public int getBrickWidth() {
-        return brickWidth;
+    public int getWidth() {
+        return width;
     }
 
-    public void setBrickWidth(int brickWidth) {
-        this.brickWidth = brickWidth;
+    public void setWidth(int width) {
+        this.width = width;
     }
 
-    public int getBrickLength() {
-        return brickLength;
+    public int getLength() {
+        return length;
     }
 
-    public void setBrickLength(int brickLength) {
-        this.brickLength = brickLength;
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public int getQty() {
@@ -42,22 +52,24 @@ public class Brick {
         this.qty = qty;
     }
 
+ 
+
     
     //prints a nice overview of the bricks used
     @Override
     public String toString() {
         
         
-        if(brickLength == 1)
+        if(length == 1)
         {
-            return brickWidth + "*" + brickLength + " [:]";
+            return width + "*" + length + " [:]";
         }
         
-        if(brickLength == 2){
-            return brickWidth + "*" + brickLength + " [::]";
+        if(length == 2){
+            return width + "*" + length + " [::]";
             
         } else {
-            return brickWidth + "*" + brickLength + " [::::]";
+            return width + "*" + length + " [::::]";
         }
         
             

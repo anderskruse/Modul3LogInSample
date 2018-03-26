@@ -7,30 +7,49 @@ package FunctionLayer;
 
 
 public class Order {
-    
-    //everything needed for the order
-    private int orderId;
+
     private int length;
     private int height;
     private int width;
-    private int shipped;
+    private int orderid;
+    private int userid;
+    private int status;
 
-    public Order(int length, int width, int height, int shipped) {
-        
+    public Order(int length, int height, int width, int userid, int status) {
         this.length = length;
         this.height = height;
         this.width = width;
-        this.shipped = shipped;
+        this.userid = userid;
+        this.status = status;
     }
 
-
-
-    public int getOrderId() {
-        return orderId;
+    public Order(int orderid, int length, int height, int width, int userid, int status) {
+        this.orderid = orderid;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.userid = userid;
+        this.status = status;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getOrderid() {
+        return orderid;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
     }
 
     public int getLength() {
@@ -56,6 +75,9 @@ public class Order {
     public void setWidth(int width) {
         this.width = width;
     }
-    
-    
+
+    public int getStatus() {
+        return status;
+    }
+
 }
