@@ -1,12 +1,15 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The purpose of UserMapper is to...
@@ -54,6 +57,30 @@ public class UserMapper {
         } catch (ClassNotFoundException | SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
+    }
+    
+    public static List<Order> showOrder(int userid) throws LoginSampleException {
+        List<Order> showOrder = new ArrayList();
+        try {
+            Connection con = Connector.connection();
+            String SQL = "select * from order where userId =(?)";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, userid);
+            ResultSet resultset = ps.executeQuery();
+            while (resultset.next()) {
+                int width = resultset.getInt("width");
+                int length = resultset.getInt("length");
+                int height = resultset.getInt("height");
+                String shipped = resultset.getString("shipped");
+                int id = resultset.getInt("orderid");
+                Order order = new Order(length, width, height, id, shipped);
+                showOrder.add(order);
+            }
+            ps.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+        return showOrder;
     }
 
 

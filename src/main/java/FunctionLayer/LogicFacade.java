@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.util.List;
 
 /**
  *
@@ -25,8 +26,8 @@ public class LogicFacade {
         return order;
     }
 
-    public static Order showOrder(int orderId) throws LoginSampleException {
-        Order showOrder = OrderMapper.getOrder(orderId);
+    public static List<Order> showOrder(int orderId) throws LoginSampleException {
+        List<Order> showOrder = UserMapper.showOrder(orderId);
         return showOrder;
     }
 }

@@ -4,54 +4,55 @@ package FunctionLayer;
  *
  * @author wtfak
  */
-public class Brick
-{
+public class Brick {
 
-    private int brickWidth;
-    private int brickLength;
-    private int qty;
+    private int height;
+    private int smallQty;
+    private int mediumQty;
+    private int largeQty;
 
-    public Brick(int qty, int dotsWidth, int dotsLength)
-    {
-        this.qty = qty;
-        this.brickWidth = dotsWidth;
-        this.brickLength = dotsLength;
+    public Brick(int height, int smallQty, int mediumQty, int largeQty) {
+        this.height = height;
+        this.smallQty = smallQty;
+        this.mediumQty = mediumQty;
+        this.largeQty = largeQty;
     }
 
-    public int getDotsWidth()
-    {
-        return brickWidth;
+    public int getHeight() {
+        return height;
     }
 
-    public int getDotsLength()
-    {
-        return brickLength;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public int getQty()
-    {
-        return qty;
+    public int getSmallQty() {
+        return smallQty;
     }
 
-    public void setQty(int qty)
-    {
-        this.qty = qty;
+    public void setSmallQty(int smallQty) {
+        this.smallQty = smallQty;
+    }
+
+    public int getMediumQty() {
+        return mediumQty;
+    }
+
+    public void setMediumQty(int mediumQty) {
+        this.mediumQty = mediumQty;
+    }
+
+    public int getLargeQty() {
+        return largeQty;
+    }
+
+    public void setLargeQty(int largeQty) {
+        this.largeQty = largeQty;
     }
 
     @Override
-    public String toString()
-    {
-        if (brickLength == 1)
-        {
-            return brickWidth + "x" + brickLength + " [:]";
-        }
-        if (brickLength == 2)
-        {
-            return brickWidth + "x" + brickLength + " [::]";
-        } else
-        {
-            return brickWidth + "x" + brickLength + " [::::]";
-        }
+    public String toString() {
+        return "Brick{" + "height=" + height + ", smallQty=" + smallQty + ", mediumQty=" + mediumQty + ", largeQty=" + largeQty + '}';
     }
 
 }

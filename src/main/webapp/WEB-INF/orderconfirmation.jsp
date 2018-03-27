@@ -4,6 +4,8 @@
     Author     : wtfak
 --%>
 
+<%@page import="FunctionLayer.Brick"%>
+<%@page import="FunctionLayer.House"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -11,6 +13,8 @@
     int height = ((Integer) session.getAttribute("height"));
     int width = ((Integer) session.getAttribute("width"));
     int length = ((Integer) session.getAttribute("length"));
+    Brick brick = (Brick) request.getAttribute("brick");
+
 %>
 <html>
     <head>
@@ -23,6 +27,10 @@
             out.print(" Height: " + height);
             out.print(" Length " + length);
             out.print(" Width " + width);
+            
+            out.print(" small bricks: " + brick.getSmallQty());
+            out.print(" medium bricks: " + brick.getMediumQty());
+            out.print(" large bricks: " + brick.getLargeQty());
 
         %>
 
