@@ -12,12 +12,12 @@
         <title>Customer home page</title>
     </head>
     <body>
-        <h1>Hello <%=request.getParameter( "email" )%> </h1>
+        <h1>Hello <%=request.getParameter("email")%> </h1>
         You are now logged in as a customer of our wonderful site.
-        
+
         What do you wanna do?
-        <!-- add href to order page
-             and previous orders -->
-        
+
+
+        <a href="FrontController?command=enterorder"> Order your house here </a>
     </body>
 </html>

@@ -4,80 +4,65 @@ package FunctionLayer;
  *
  * @author wtfak
  */
-
-
 public class Order {
 
-    private int length;
+    private int id;
     private int height;
     private int width;
-    private int orderid;
-    private int userid;
-    private int status;
+    private int length;
+    private String shipped;
+    private int userId;
+    private String email;
 
-    public Order(int length, int height, int width, int userid, int status) {
+    //From the user, to be put into database
+    public Order(int length, int width, int height) {
         this.length = length;
+        this.width = width;
+        this.height = height;
+    }
+    // order from the database, used to show orders
+    public Order(int id, int length, int width, int height, String shipped) {
+        this.id = id;
         this.height = height;
         this.width = width;
-        this.userid = userid;
-        this.status = status;
-    }
-
-    public Order(int orderid, int length, int height, int width, int userid, int status) {
-        this.orderid = orderid;
         this.length = length;
-        this.height = height;
-        this.width = width;
-        this.userid = userid;
-        this.status = status;
+        this.shipped = shipped;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public int getUserId() {
+        return userId;
     }
 
-    public int getOrderid() {
-        return orderid;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
-    public void setOrderid(int orderid) {
-        this.orderid = orderid;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
+    public String getEmail() {
+        return email;
     }
 
     public int getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
     public int getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public int getLength() {
+        return length;
     }
 
-    public int getStatus() {
-        return status;
+    public int getId() {
+        return id;
+    }
+
+    public String getShipped() {
+        return shipped;
+    }
+
+    public void setShipped(String shipped) {
+        this.shipped = shipped;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

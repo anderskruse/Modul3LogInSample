@@ -19,14 +19,14 @@ public class LogicFacade {
         return user;
     }
 
-     public static Order createOrder(int length, int width, int height, int userid, int status) throws LoginSampleException {
-        Order order = new Order(length, height, width, userid, status);
-        OrderMapper.createOrder(order);
+    public static Order createOrder(int length, int width, int height, int userId) throws LoginSampleException {
+        Order order = new Order(length, width, height);
+        OrderMapper.createOrder(order, userId);
         return order;
     }
 
-//    public static Order showOrder(int orderId) {
-//        Order showOrder = OrderMapper.getOrder(orderId);
-//        return showOrder;
-//    }
+    public static Order showOrder(int orderId) throws LoginSampleException {
+        Order showOrder = OrderMapper.getOrder(orderId);
+        return showOrder;
+    }
 }

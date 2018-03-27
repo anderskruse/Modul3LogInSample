@@ -4,82 +4,54 @@ package FunctionLayer;
  *
  * @author wtfak
  */
+public class Brick
+{
 
-
-public class Brick {
-    
-    private int width;
-    private int length;
-    private int height;
+    private int brickWidth;
+    private int brickLength;
     private int qty;
 
-    public Brick(int width, int length, int height, int qty) {
-        this.width = width;
-        this.length = length;
-        this.height = height;
+    public Brick(int qty, int dotsWidth, int dotsLength)
+    {
         this.qty = qty;
+        this.brickWidth = dotsWidth;
+        this.brickLength = dotsLength;
     }
 
-    public int getWidth() {
-        return width;
+    public int getDotsWidth()
+    {
+        return brickWidth;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public int getDotsLength()
+    {
+        return brickLength;
     }
 
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getQty() {
+    public int getQty()
+    {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(int qty)
+    {
         this.qty = qty;
     }
 
- 
-
-    
-    //prints a nice overview of the bricks used
     @Override
-    public String toString() {
-        
-        
-        if(length == 1)
+    public String toString()
+    {
+        if (brickLength == 1)
         {
-            return width + "*" + length + " [:]";
+            return brickWidth + "x" + brickLength + " [:]";
         }
-        
-        if(length == 2){
-            return width + "*" + length + " [::]";
-            
-        } else {
-            return width + "*" + length + " [::::]";
+        if (brickLength == 2)
+        {
+            return brickWidth + "x" + brickLength + " [::]";
+        } else
+        {
+            return brickWidth + "x" + brickLength + " [::::]";
         }
-        
-            
     }
-    
-    
 
- 
-    
-
-    
-    
 }

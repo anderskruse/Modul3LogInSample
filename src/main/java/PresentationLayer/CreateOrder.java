@@ -13,22 +13,24 @@ import javax.servlet.http.HttpSession;
  *
  * @author wtfak
  */
-public class MakeOrder extends Command {
+public class CreateOrder extends Command {
 
     //gets parameters width, length and height from the form "makeorder" in order.jsp, and turns it into an order
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
+        int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         int userid = user.getId();
-
         
-        Order order = LogicFacade.createOrder(length, height, width, userid, 0);
-        request.setAttribute("order", order);
+        Order order = LogicFacade.createOrder(length, width, height, userid);
+        session.setAttribute("order", order);
+        session.setAttribute("length", length);
+        session.setAttribute("width", width);
+        session.setAttribute("height", height);
 
-        return "ordercreated";
+        return "orderconfirmation";
     }
 }
