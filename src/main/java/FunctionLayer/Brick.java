@@ -6,53 +6,60 @@ package FunctionLayer;
  */
 public class Brick {
 
-    private int height;
-    private int smallQty;
-    private int mediumQty;
-    private int largeQty;
+    private int qty;
+    private int dotWidth;
+    private int dotLength;
 
-    public Brick(int height, int smallQty, int mediumQty, int largeQty) {
-        this.height = height;
-        this.smallQty = smallQty;
-        this.mediumQty = mediumQty;
-        this.largeQty = largeQty;
+    public Brick(int height, int smallQty, int mediumQty) {
+        this.qty = height;
+        this.dotWidth = smallQty;
+        this.dotLength = mediumQty;
     }
 
-    public int getHeight() {
-        return height;
+    public int getQty() {
+        return qty;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
-    public int getSmallQty() {
-        return smallQty;
+    public int getDotWidth() {
+        return dotWidth;
     }
 
-    public void setSmallQty(int smallQty) {
-        this.smallQty = smallQty;
+    public void setDotWidth(int dotWidth) {
+        this.dotWidth = dotWidth;
     }
 
-    public int getMediumQty() {
-        return mediumQty;
+    public int getDotLength() {
+        return dotLength;
     }
 
-    public void setMediumQty(int mediumQty) {
-        this.mediumQty = mediumQty;
+    public void setDotLength(int dotLength) {
+        this.dotLength = dotLength;
     }
 
-    public int getLargeQty() {
-        return largeQty;
-    }
 
-    public void setLargeQty(int largeQty) {
-        this.largeQty = largeQty;
-    }
 
     @Override
-    public String toString() {
-        return "Brick{" + "height=" + height + ", smallQty=" + smallQty + ", mediumQty=" + mediumQty + ", largeQty=" + largeQty + '}';
+    public String toString()
+    {
+        if (dotLength == 1)
+        {
+            return dotWidth + "x" + dotLength + " [:]";
+        }
+        if (dotLength == 2)
+        {
+            return dotWidth + "x" + dotLength + " [::]";
+        } else
+        {
+            return dotWidth + "x" + dotLength + " [::::]";
+        }
     }
+
+
+
+
 
 }

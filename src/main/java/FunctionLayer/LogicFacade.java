@@ -2,6 +2,7 @@ package FunctionLayer;
 
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,10 +21,21 @@ public class LogicFacade {
         return user;
     }
 
-    public static Order createOrder(int length, int width, int height, int userId) throws LoginSampleException {
+    public static Order createOrder(int length, int width, int height, int userId) throws OrderException {
         Order order = new Order(length, width, height);
         OrderMapper.createOrder(order, userId);
         return order;
+    }
+
+    public static ArrayList<Brick> orderToBrick(Order order, boolean doorWindow) {
+        House house = new House();
+        ArrayList<Brick> brickList = house.calculateWall(order.getHeight(), order.getLength(), order.getWidth());
+        return brickList;
+
+    }
+
+    public static ArrayList<Order> orders(User user) throws OrderException {
+        return OrderMapper.getOrders(user.getId());
     }
 
     public static List<Order> showOrder(int orderId) throws LoginSampleException {

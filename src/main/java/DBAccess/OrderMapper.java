@@ -2,6 +2,7 @@ package DBAccess;
 
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.OrderException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
  */
 public class OrderMapper {
 
-public static void createOrder(Order order, int userId) throws LoginSampleException
+public static void createOrder(Order order, int userId) throws OrderException
     {
         try
         {
@@ -34,37 +35,41 @@ public static void createOrder(Order order, int userId) throws LoginSampleExcept
             
         } catch (SQLException | ClassNotFoundException ex)
         {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 
-//public static Order getOrder(int orderId) throws LoginSampleException
-//    {
-//        try
-//        {
-//            Connection con = Connector.connection();
-//            String SQL = "select * from `order` where id = ?;";
-//            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-//            ps.setInt(1, orderId);
-//            Order order = null;
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next())
-//            {
-//                int id = rs.getInt("id");
-//                int height = rs.getInt("height");
-//                int width = rs.getInt("width");
-//                int length = rs.getInt("length");
-//                String shipped = rs.getString("shipped");
-//                order = new Order(id, length, width, height, shipped);
-//            }
-//            return order;
-//        } catch (ClassNotFoundException | SQLException ex)
-//        {
-//            throw new LoginSampleException(ex.getMessage());
-//        }
-//    }
+public static ArrayList<Order> getOrders(int userId) throws OrderException
+    {
+        try
+        {
+            Connection con = Connector.connection();
+            String SQL = "select * from `order` where user_userId = ?";
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, userId);
+            ArrayList<Order> orders = new ArrayList<>();
+            Order order = null;
+            ResultSet rs = null;
+            rs = ps.executeQuery();
 
-    public static void updateStatus(Order order, int userId) throws LoginSampleException {
+            while (rs.next())
+            {
+                int id = rs.getInt("id");
+                int height = rs.getInt("height");
+                int width = rs.getInt("width");
+                int length = rs.getInt("length");
+                String status = rs.getString("shipped");
+                order = new Order(id, length, width, height, status);
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException | ClassNotFoundException ex)
+        {
+            throw new OrderException(ex.getMessage());
+        }
+    }
+
+    public static void updateStatus(Order order, int userId) throws OrderException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE `legoHouse`.`order` SET `shipped`='Shipped' WHERE `id`=? and`user_userId`=?";
@@ -73,7 +78,7 @@ public static void createOrder(Order order, int userId) throws LoginSampleExcept
             ps.setInt(2, userId);
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new LoginSampleException(ex.getMessage());
+            throw new OrderException(ex.getMessage());
         }
     }
 

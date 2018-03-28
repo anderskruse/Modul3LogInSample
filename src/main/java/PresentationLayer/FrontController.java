@@ -6,7 +6,10 @@
 package PresentationLayer;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.OrderException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,9 +31,10 @@ public class FrontController extends HttpServlet {
      @param response servlet response
      @throws ServletException if a servlet-specific error occurs
      @throws IOException if an I/O error occurs
+     * @throws FunctionLayer.OrderException
      */
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
-            throws ServletException, IOException {
+            throws ServletException, IOException, OrderException {
         try {
             Command action = Command.from( request );
             String view = action.execute( request, response );
@@ -53,7 +57,11 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        processRequest( request, response );
+        try {
+            processRequest( request, response );
+        } catch (OrderException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -67,7 +75,11 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
-        processRequest( request, response );
+        try {
+            processRequest( request, response );
+        } catch (OrderException ex) {
+            Logger.getLogger(FrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
